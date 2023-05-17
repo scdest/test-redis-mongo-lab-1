@@ -1,0 +1,40 @@
+test> use mydb
+switched to db mydb
+mydb> db.mycollection.insertOne({ field1: "value1", field2: "value2" })
+{
+  acknowledged: true,
+  insertedId: ObjectId("64645ded3ea4e0861cdb5f4c")
+}
+mydb> db.mycollection.findOne({ field1: "value1" })
+{
+  _id: ObjectId("64645ded3ea4e0861cdb5f4c"),
+  field1: 'value1',
+  field2: 'value2'
+}
+mydb> db.mycollection.find()
+[
+  {
+    _id: ObjectId("64645ded3ea4e0861cdb5f4c"),
+    field1: 'value1',
+    field2: 'value2'
+  }
+]
+mydb> db.mycollection.count()
+DeprecationWarning: Collection.count() is deprecated. Use countDocuments or estimatedDocumentCount.
+1
+mydb> db.mycollection.countDocuments()
+1
+mydb> db.mycollection.updateOne({ field1: "value1" }, { $set: { field2: "newvalue" } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+mydb> db.mycollection.insertOne({ field1: "value22", field2: "value244" })
+{
+  acknowledged: true,
+  insertedId: ObjectId("6464696c3ea4e0861cdb5f4d")
+}
+mydb>
